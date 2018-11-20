@@ -1,0 +1,16 @@
+<div class="container">
+  <table id="programs">
+    <tr>
+      <th>NAME</th>
+      <th>DESCRIPTION</th>
+      <th>BURGET VS ACTUAL</th>
+      <th>STATUS</th>
+    </tr>
+    <tr (click)="openProgram(program.id)" *ngFor="let program of programs">
+      <td> {{ program.name }} </td>
+      <td> {{ program.desription }} </td>
+      <td> {{ program.budget }} / {{ program.actuals }} </td>
+      <td> {{ program.status }}</td>
+    </tr>
+  </table>
+</div>

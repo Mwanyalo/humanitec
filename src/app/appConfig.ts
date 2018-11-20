@@ -8,6 +8,6 @@ export const httpOptions = {
 };
 
 export const appConfig = {
-    programsUrl: 'https://dev.toladata.io/api/workflowlevel1/',
-    activitiesUrl: 'https://dev.toladata.io/api/workflowlevel2/'
+    programsUrl: 'https://dev.toladata.io/api/workflowlevel1',
+    activitiesUrl: 'https://dev.toladata.io/api/workflowlevel2'
 };

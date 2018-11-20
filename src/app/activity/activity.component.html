@@ -1,0 +1,45 @@
+<mat-dialog-content [formGroup]="activityForm">
+
+  <mat-form-field>
+
+    <input matInput placeholder="Name" formControlName="name" required>
+
+  </mat-form-field>
+
+  <mat-form-field>
+
+    <input matInput [matDatepicker]="startData" formControlName="expected_start_date">
+
+    <mat-datepicker-toggle matSuffix [for]="startData">
+
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #startData></mat-datepicker>
+
+  </mat-form-field>
+
+  <mat-form-field>
+
+    <input matInput [matDatepicker]="endDate" formControlName="expected_end_date">
+
+    <mat-datepicker-toggle matSuffix [for]="endDate">
+
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #endDate></mat-datepicker>
+
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button class="mat-raised-button" (click)="close()">
+    Cancel
+  </button>
+
+  <button class="mat-raised-button mat-primary" (click)="submitActivity()">
+    Save
+  </button>
+
+</mat-dialog-actions>
