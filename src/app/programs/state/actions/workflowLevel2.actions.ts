@@ -22,7 +22,9 @@ export class GetActivities implements Action {
 
 export class GetActivitiesSuccess implements Action {
   public readonly type = EActivityActions.GetActivitiesSuccess;
-  constructor(public payload: IActivity[]) {}
+  constructor(public payload: IActivity[]) {
+    localStorage.setItem('activities', JSON.stringify(payload));
+  }
 }
 
 export class AddActivity implements Action {

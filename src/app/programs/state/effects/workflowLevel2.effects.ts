@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { of, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 import { switchMap, map, withLatestFrom, mergeMap } from 'rxjs/operators';
 import { IActivity } from '../../../model/activity';
 
@@ -32,6 +34,11 @@ export class WorkflowLevel2Effects {
       return this._activityService.getActivitiesList().pipe(
         map((response) => new GetActivitiesSuccess(response))
       );
+    }), catchError((error) => {
+      const activities = JSON.parse(localStorage.getItem('activities'));
+      if ( activities !== null) {
+          return of(new GetActivitiesSuccess(activities));
+      }
     })
   );
 

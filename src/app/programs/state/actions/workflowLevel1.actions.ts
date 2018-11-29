@@ -15,7 +15,9 @@ export class GetPrograms implements Action {
 
 export class GetProgramsSuccess implements Action {
   public readonly type = EProgramActions.GetProgramsSuccess;
-  constructor(public payload: IProgram[]) {}
+  constructor(public payload: IProgram[]) {
+    localStorage.setItem('programs', JSON.stringify(payload));
+  }
 }
 
 export class GetProgram implements Action {

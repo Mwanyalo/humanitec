@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { of, Observable } from 'rxjs';
-import { switchMap, map, withLatestFrom, mergeMap } from 'rxjs/operators';
+import { switchMap, map, withLatestFrom, mergeMap, catchError } from 'rxjs/operators';
 
 import { IAppState } from '../app.state';
 
@@ -38,6 +38,11 @@ export class WorkflowLevel1Effects {
       return this._programService.getProgramsList().pipe(
         map((response) => new GetProgramsSuccess(response))
       );
+    }), catchError((error) => {
+      const programs = JSON.parse(localStorage.getItem('programs'));
+      if ( programs !== null) {
+          return of(new GetProgramsSuccess(programs));
+      }
     })
   );
 
