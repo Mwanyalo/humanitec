@@ -14,8 +14,8 @@
     </tr>
     <tr *ngFor="let activity of activities">
       <td> {{ activity.name }} </td>
-      <td> {{ activity.expected_start_date }}</td>
-      <td> {{ activity.expected_end_date }} </td>
+      <td> {{ activity.expected_start_date | date: 'dd/MM/yyyy'}}</td>
+      <td> {{ activity.expected_end_date | date: 'dd/MM/yyyy' }} </td>
       <td>
         <button (click)="deleteActivity(activity.id)" mat-flat-button>
           <mat-icon color="warn">delete_forever</mat-icon>
