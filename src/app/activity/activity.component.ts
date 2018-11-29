@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import * as moment from 'moment';
 
 import { IActivity } from '../model/activity';
 import { Store } from '@ngrx/store';
@@ -35,11 +36,15 @@ export class ActivityComponent implements OnInit {
   submitActivity() {
     if (this.activityForm.valid) {
       this.dialogRef.close(this.activityForm.value);
-      this.activity = this.activityForm.value;
-      this.activity.workflowlevel1 = `https://dev-api.toladata.io/api/workflowlevel1/${this.id}`;
-      // this._store.dispatch(new AddActivity(this.activity));
-      this.activitiesService.addActivity(this.activity).subscribe(data => {
-      });
+      const model: any = {};
+
+      model.expected_start_date = moment(this.activityForm.value.expected_start_date).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+      model.expected_end_date = moment(this.activityForm.value.expected_end_date).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+      model.name = this.activityForm.value.name;
+      model.workflowlevel1 = `https://dev-api.toladata.io/api/workflowlevel1/${this.id}/`;
+      this.activity = model;
+      console.log(  this.activity);
+      this._store.dispatch(new AddActivity(this.activity));
     }
   }
 

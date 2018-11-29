@@ -7,6 +7,6 @@ export interface IActivityState {
 
 export const initialActivityState: IActivityState = {
   activities: null,
-  selectedActivity: null
+  selectedActivity: null,
 };
 

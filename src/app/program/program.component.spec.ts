@@ -4,12 +4,11 @@ import { MaterialModule } from '../material.module';
 
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { TestStore } from '../programs/state/testStore';
 
 import {MAT_DIALOG_DATA, MatDialogRef, DateAdapter, MatNativeDateModule, MatDatepickerModule, MAT_DATE_FORMATS} from '@angular/material';
 
 
-fdescribe('ProgramComponent', () => {
+describe('ProgramComponent', () => {
   let component: ProgramComponent;
   let fixture: ComponentFixture<ProgramComponent>;
 
@@ -24,10 +23,6 @@ fdescribe('ProgramComponent', () => {
           provide: ActivatedRoute,
           useValue: {}
         },
-        {
-          provide: Store,
-           useClass: TestStore
-        }
       ],
     })
     .compileComponents();

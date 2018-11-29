@@ -2,13 +2,13 @@
 
   <mat-form-field>
 
-    <input matInput placeholder="Name" formControlName="name" required>
+    <input matInput  placeholder="Activity name" formControlName="name" required>
 
   </mat-form-field>
 
   <mat-form-field>
 
-    <input matInput [matDatepicker]="startData" formControlName="expected_start_date">
+    <input matInput [matDatepicker]="startData" placeholder="Start date" formControlName="expected_start_date">
 
     <mat-datepicker-toggle matSuffix [for]="startData">
 
@@ -20,7 +20,7 @@
 
   <mat-form-field>
 
-    <input matInput [matDatepicker]="endDate" formControlName="expected_end_date">
+    <input matInput [matDatepicker]="endDate"  placeholder="End date" formControlName="expected_end_date">
 
     <mat-datepicker-toggle matSuffix [for]="endDate">
 

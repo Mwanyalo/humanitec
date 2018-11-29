@@ -18,7 +18,7 @@ export class ActivitiesService {
   }
 
   addActivity(activity: IActivity) {
-    const url = `${appConfig.activitiesUrl}`;
+    const url = `${appConfig.activitiesUrl}/`;
     return this.http.post(url, activity, httpOptions);
   }
 

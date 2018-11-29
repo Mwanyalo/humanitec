@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ActivitiesService } from '../services/activities.service';
 
-describe('ActivityComponent', () => {
+fdescribe('ActivityComponent', () => {
   let component: ActivityComponent;
   let fixture: ComponentFixture<ActivityComponent>;
 

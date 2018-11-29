@@ -7,7 +7,6 @@ import { Store, select } from '@ngrx/store';
 
 import { IAppState } from './state/app.state';
 import { selectProgramList } from './state/selectors/workflowLevel1.selectors';
-import { selectActivityList } from './state/selectors/workflowLevel2.selectors';
 
 @Component({
   selector: 'app-programs',

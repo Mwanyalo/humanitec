@@ -58,17 +58,17 @@ export class WorkflowLevel2Effects {
   //   })
   // );
 
-  // @Effect()
-  // addActivity$ = this._actions$.pipe(
-  //   ofType<AddActivity>(EActivityActions.AddActivity),
-  //   map(action => action.payload),
-  //   withLatestFrom(this._store.pipe(select(selectActivityList))),
-  //   switchMap((action: AddActivity) => {
-  //     return this._activityService.addActivity(action).pipe(
-  //       map((response: any) => new AddActivitySuccess(response))
-  //     );
-  //   })
-  // );
+  @Effect()
+  addActivity$ = this._actions$.pipe(
+    ofType<AddActivity>(EActivityActions.AddActivity),
+    map(action => action.payload),
+    switchMap((action) => {
+      return this._activityService.addActivity(action).pipe(
+        map((response: any) => new AddActivitySuccess(response))
+      );
+    })
+  );
+
 
 
   // @Effect()

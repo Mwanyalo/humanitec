@@ -9,6 +9,8 @@ import { ActivityComponent } from '../activity/activity.component';
 import { DeleteActivity } from '../programs/state/actions/workflowLevel2.actions';
 import { selectActivityList } from '../programs/state/selectors/workflowLevel2.selectors';
 import { appConfig } from '../appConfig';
+import { GetActivities } from '../programs/state/actions/workflowLevel2.actions';
+import { selectProgramList } from '../programs/state/selectors/workflowLevel1.selectors';
 
 @Component({
   selector: 'app-program',
@@ -21,7 +23,7 @@ export class ProgramComponent implements OnInit {
   activities = [];
 
   constructor(private route: ActivatedRoute, private _store: Store<IAppState>, private dialog: MatDialog) {
-    this._store.pipe(select(selectActivityList));
+    this._store.dispatch(new GetActivities());
   }
 
   ngOnInit() {
@@ -45,7 +47,6 @@ export class ProgramComponent implements OnInit {
 
   activitiesFilter(id) {
     this._store.pipe(select(selectActivityList)).subscribe((value) => {
-      console.log(value);
       value.filter((activity) => {
         if (activity.workflowlevel1 === `${appConfig.programsUrl}/${id}/`) {
           this.activities.push(activity);
@@ -56,9 +57,6 @@ export class ProgramComponent implements OnInit {
 
   deleteActivity(id) {
     this._store.dispatch(new DeleteActivity(id));
-    // this.activitiesService.deleteActivity(id).subscribe(data => {
-    //   alert('Actity deleted successfully');
-    // });
   }
 
 }
