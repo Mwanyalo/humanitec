@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProgramsService } from '../services/programs.service';
+import { GetPrograms } from './state/actions/workflowLevel1.actions';
+import { GetActivities } from './state/actions/workflowLevel2.actions';
+import { Store, select } from '@ngrx/store';
+
+import { IAppState } from './state/app.state';
+import { selectProgramList } from './state/selectors/workflowLevel1.selectors';
+import { selectActivityList } from './state/selectors/workflowLevel2.selectors';
 
 @Component({
   selector: 'app-programs',
@@ -10,22 +16,12 @@ import { ProgramsService } from '../services/programs.service';
 })
 export class ProgramsComponent implements OnInit {
 
-  public programs: Array<any> = [];
-  public activities: Array<any> = [];
-
-  constructor( public programsServices: ProgramsService, public route: Router) {
-
-  }
+  programs = this._store.pipe(select(selectProgramList));
+  constructor( private _store: Store<IAppState>, public route: Router) { }
 
   ngOnInit() {
-    this.programsList();
-  }
-
-  programsList() {
-    this.programsServices.getProgramsList().subscribe(data => {
-      this.programs =  data;
-      console.log(this.programs);
-    });
+    this._store.dispatch(new GetPrograms());
+    this._store.dispatch(new GetActivities());
   }
 
   openProgram(id) {

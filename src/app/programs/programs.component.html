@@ -6,7 +6,7 @@
       <th>BURGET VS ACTUAL</th>
       <th>STATUS</th>
     </tr>
-    <tr (click)="openProgram(program.id)" *ngFor="let program of programs">
+    <tr (click)="openProgram(program.id)" *ngFor="let program of programs | async">
       <td> {{ program.name }} </td>
       <td> {{ program.desription }} </td>
       <td> {{ program.budget }} / {{ program.actuals }} </td>

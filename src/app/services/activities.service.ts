@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { httpOptions, appConfig } from '../appConfig';
-import { Activity } from '../model/activity';
+import { IActivity } from '../model/activity';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,12 @@ export class ActivitiesService {
 
   constructor(private http: HttpClient) { }
 
-  getActivitiesList(id): Observable<any> {
-    const url = `${appConfig.activitiesUrl}/?workflowlevel1__id=${id}`;
+  getActivitiesList(): Observable<any> {
+    const url = `${appConfig.activitiesUrl}`;
     return this.http.get<any>(url, httpOptions);
   }
 
-  addActivity(activity: Activity) {
+  addActivity(activity: IActivity) {
     const url = `${appConfig.activitiesUrl}`;
     return this.http.post(url, activity, httpOptions);
   }

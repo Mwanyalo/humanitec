@@ -9,4 +9,5 @@ describe('ActivitiesService', () => {
     const service: ActivitiesService = TestBed.get(ActivitiesService);
     expect(service).toBeTruthy();
   });
+
 });
